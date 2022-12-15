@@ -5,7 +5,9 @@ import com.talan.kata.cor.classes.MoneyDispenser;
 import com.talan.kata.cor.classes.NullDispenser;
 import com.talan.kata.cor.classes.ThreeDispenser;
 import com.talan.kata.cor.classes.TwentyDispenser;
+import lombok.extern.java.Log;
 
+@Log
 public class Launcher {
 
     /**
@@ -42,7 +44,7 @@ public class Launcher {
 
         final long end = System.currentTimeMillis();
 
-        System.out.printf("Opération réalisée en %d ms%n", end-start);
+        log.info(String.format("Opération réalisée en %d ms%n", end-start));
 
     }
 }
