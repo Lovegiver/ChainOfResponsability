@@ -7,13 +7,10 @@ import org.jetbrains.annotations.NotNull;
  * Cette implémentation de l'interface {@link MoneyDispenser} accepte un argument supplémentaire dans
  * son constructeur. Son utilisation n'est pas obligatoire, elle ne fait que proposer un traitement par défaut.
  */
-class DelegatedDispenser implements MoneyDispenser {
-    private final MoneyDispenser dispenser;
-    private final int buckValue;
+class DelegatedDispenser extends BaseDispenser {
 
     public DelegatedDispenser(@NotNull MoneyDispenser dispenser, int buckValue) {
-        this.dispenser = dispenser;
-        this.buckValue = buckValue;
+        super(dispenser, buckValue);
     }
 
     /**
@@ -22,13 +19,13 @@ class DelegatedDispenser implements MoneyDispenser {
      */
     @Override
     public void dispenseBucks(int amount) {
-        int numberOfBucks = amount / buckValue;
-        int remainingAmount = amount % buckValue;
+        int numberOfBucks = amount / super.buckValue;
+        int remainingAmount = amount % super.buckValue;
         if (numberOfBucks > 0) {
-            System.out.printf("Here are %d bucks of %d$\n", numberOfBucks, buckValue);
+            System.out.printf("Here are %d bucks of %d$\n", numberOfBucks, super.buckValue);
         }
         if (remainingAmount > 0) {
-            dispenser.dispenseBucks(remainingAmount);
+            super.next.dispenseBucks(remainingAmount);
         }
     }
 }

@@ -1,8 +1,18 @@
 package com.talan.kata.cor.classes;
 
+/**
+ * Permet de centraliser le code commun → réduit le taux de duplication.<br>
+ * Seule cette classe appelle le {@link DelegatedDispenser}.<br>
+ * À l'exception du {@link DelegatedDispenser}, les classes-filles du {@link BaseDispenser} appelle
+ * la méthode {@link #dispenseBucks(int)} de la classe-mère.<br>
+ * La classe-mère instancie le DelegatedDispenser et appelle sa méthode {@link #dispenseBucks(int)}.<br>
+ * Ça devient un peu tordu et moins lisible :)
+ */
 abstract class BaseDispenser implements MoneyDispenser {
-    private final MoneyDispenser next;
-    private final int buckValue;
+    /** Etape suivante du traitement */
+    final MoneyDispenser next;
+    /** Valeur faciale du billet */
+    final int buckValue;
 
     BaseDispenser(MoneyDispenser next, int buckValue) {
         this.next = next;
