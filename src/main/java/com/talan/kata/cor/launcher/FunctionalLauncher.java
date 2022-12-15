@@ -1,8 +1,10 @@
 package com.talan.kata.cor.launcher;
 
 import com.talan.kata.cor.functional.CashDispenser;
+import lombok.extern.java.Log;
 import org.jetbrains.annotations.NotNull;
 
+@Log
 public class FunctionalLauncher {
 
     public static void main(String[] args) {
@@ -32,7 +34,7 @@ public class FunctionalLauncher {
             public Integer dispenseCash(@NotNull Integer amount) {
                 final int buxNumber = amount / buxValue;
                 final int remainingAmount = amount % buxValue;
-                System.out.printf("Voilà %d billets de %d$%n", buxNumber, buxValue);
+                log.info(String.format("Voilà %d billets de %d$%n", buxNumber, buxValue));
                 return remainingAmount;
             }
         }
@@ -58,7 +60,7 @@ public class FunctionalLauncher {
         /* Affiche le montant perdu faute de billet adapté */
         @NotNull
         CashDispenser<Integer> endOperation = amount -> {
-            System.out.printf("Tu as perdu %d$%n", amount);
+            log.info(String.format("Tu as perdu %d$%n", amount));
             return 0;
         };
 
@@ -70,11 +72,11 @@ public class FunctionalLauncher {
                 )
                 .dispenseCash(2592);
 
-        System.out.printf("Reste à distribuer : %d$%n", solde);
+        log.info(String.format("Reste à distribuer : %d$%n", solde));
 
         final long end = System.currentTimeMillis();
 
-        System.out.printf("Opération réalisée en %d ms%n", end-start);
+        log.info(String.format("Opération réalisée en %d ms%n", end-start));
 
     }
 }
