@@ -10,7 +10,7 @@ public class TwentyDispenser implements MoneyDispenser{
 
     private final MoneyDispenser next;
 
-    private final int buckValue = 20;
+    private static final int BUCK_VALUE = 20;
 
     public TwentyDispenser(@NotNull MoneyDispenser next) {
         this.next = next;
@@ -22,7 +22,7 @@ public class TwentyDispenser implements MoneyDispenser{
      */
     @Override
     public void dispenseBucks(int amount) {
-        DelegatedDispenser delegate = new DelegatedDispenser(this.next, this.buckValue);
+        DelegatedDispenser delegate = new DelegatedDispenser(this.next, BUCK_VALUE);
         delegate.dispenseBucks(amount);
     }
 }
