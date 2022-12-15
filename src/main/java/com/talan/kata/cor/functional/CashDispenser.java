@@ -9,6 +9,7 @@ import java.util.Objects;
  * prendra en charge le chaînage des opérations en lieu et place d'un chaînage de constructeurs.<br>
  * @param <T> l'argument reçu et le résultat renvoyé sont de même type
  */
+@FunctionalInterface
 public interface CashDispenser<T> {
 
     /**
