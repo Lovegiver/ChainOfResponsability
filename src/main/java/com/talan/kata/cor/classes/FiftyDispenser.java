@@ -22,6 +22,7 @@ public class FiftyDispenser implements MoneyDispenser{
      */
     @Override
     public void dispenseBucks(int amount) {
+        /* Réduit le code dupliqué en appliquant le traitement par défaut */
         DelegatedDispenser delegate = new DelegatedDispenser(this.next, BUCK_VALUE);
         delegate.dispenseBucks(amount);
     }
