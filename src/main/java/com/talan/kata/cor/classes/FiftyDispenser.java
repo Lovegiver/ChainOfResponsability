@@ -6,14 +6,11 @@ import org.jetbrains.annotations.NotNull;
  * Hérite de {@link MoneyDispenser}.
  * Accepte un argument NON NULL parce que NULL c'est le mal
  */
-public class FiftyDispenser implements MoneyDispenser{
-
-    private final MoneyDispenser next;
-
+public class FiftyDispenser extends BaseDispenser {
     private static final int BUCK_VALUE = 50;
 
     public FiftyDispenser(@NotNull MoneyDispenser next) {
-        this.next = next;
+        super(next, BUCK_VALUE);
     }
 
     /**
@@ -22,8 +19,6 @@ public class FiftyDispenser implements MoneyDispenser{
      */
     @Override
     public void dispenseBucks(int amount) {
-        /* Réduit le code dupliqué en appliquant le traitement par défaut */
-        DelegatedDispenser delegate = new DelegatedDispenser(this.next, BUCK_VALUE);
-        delegate.dispenseBucks(amount);
+        super.dispenseBucks(amount);
     }
 }
