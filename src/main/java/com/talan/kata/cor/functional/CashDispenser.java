@@ -10,7 +10,7 @@ import java.util.Objects;
  * @param <T> l'argument reçu et le résultat renvoyé sont de même type
  */
 @FunctionalInterface
-public interface CashDispenser<T> {
+public interface CashDispenser<T extends Number> {
 
     /**
      * Calcule le nombre de billets d'une certaine valeur.<br>
@@ -21,7 +21,7 @@ public interface CashDispenser<T> {
     T dispenseCash(@NotNull T t);
 
     /**
-     * Permet de chaîner plusieurs appels à la méthode {@link #dispenseCash(Object)}.<br>
+     * Permet de chaîner plusieurs appels à la méthode {@link #dispenseCash(Number)}.<br>
      * @param after l'opération suivante
      * @return un objet {@link CashDispenser} à chaîner avec le précédent
      */
