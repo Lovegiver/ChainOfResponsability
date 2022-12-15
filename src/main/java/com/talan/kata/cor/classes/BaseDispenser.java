@@ -1,5 +1,7 @@
 package com.talan.kata.cor.classes;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Permet de centraliser le code commun → réduit le taux de duplication.<br>
  * Seule cette classe appelle le {@link DelegatedDispenser}.<br>
@@ -14,7 +16,7 @@ abstract class BaseDispenser implements MoneyDispenser {
     /** Valeur faciale du billet */
     final int buckValue;
 
-    BaseDispenser(MoneyDispenser next, int buckValue) {
+    BaseDispenser(@NotNull MoneyDispenser next, int buckValue) {
         this.next = next;
         this.buckValue = buckValue;
     }
