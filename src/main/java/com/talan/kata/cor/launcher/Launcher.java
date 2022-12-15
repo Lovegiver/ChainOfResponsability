@@ -23,6 +23,8 @@ public class Launcher {
      */
     public static void main(String[] args) {
 
+        final long start = System.currentTimeMillis();
+
         /*
          * C'est ici que l'on injecte les dépendances, aucun montant.
          * Noter la dernière dépendance qui implémente l'interface MoneyDispenser, comme les autres,
@@ -37,6 +39,10 @@ public class Launcher {
                 )
         );
         moneyDispenser.dispenseBucks(2592);
+
+        final long end = System.currentTimeMillis();
+
+        System.out.printf("Opération réalisée en %d ms%n", end-start);
 
     }
 }
