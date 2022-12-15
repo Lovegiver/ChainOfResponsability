@@ -22,13 +22,7 @@ public class ThreeDispenser implements MoneyDispenser{
      */
     @Override
     public void dispenseBucks(int amount) {
-        int numberOfBucks = amount / this.buckValue;
-        int remainingAmount = amount % this.buckValue;
-        if (numberOfBucks > 0) {
-            System.out.printf("Here are %d bucks of %d$\n", numberOfBucks, this.buckValue);
-        }
-        if (remainingAmount > 0) {
-            next.dispenseBucks(remainingAmount);
-        }
+        DelegatedDispenser delegate = new DelegatedDispenser(this.next, this.buckValue);
+        delegate.dispenseBucks(amount);
     }
 }
